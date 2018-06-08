@@ -1,0 +1,6 @@
+﻿  Level1State.cpp
+c:\users\guill\desktop\00\00\mapobject.h(22): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\guill\desktop\00\00\mapobject.h(23): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\guill\desktop\00\00\level1state.cpp(19): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\guill\desktop\00\00\level1state.cpp(41): warning C4018: '<' : incompatibilité signed/unsigned
+  00.vcxproj -> C:\Users\guill\Desktop\00\Debug\00.exe
