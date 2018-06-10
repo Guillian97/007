@@ -60,6 +60,7 @@ int Player::getFire() { return fire; }
 int Player::getMaxFire() { return maxFire; }
 void Player::setFiring() { firing = true; }
 void Player::setScratching() { scratching = true; }
+void Player::setDead() { dead = true;  }
 void Player::setGliding(bool b) { gliding = b; }
 bool Player::isDead() {
 	return dead;
@@ -95,6 +96,7 @@ void Player::checkAttack(std::vector<Enemy*>& enemies) {
 		}
 	}
 }
+
 
 void Player::hit(int damage) {
 	if (flinching) return;

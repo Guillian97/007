@@ -6,6 +6,7 @@ Level1State::Level1State(GameStateManager & gsm) : gsm(gsm), tileMap(30), backgr
 	Init();
 }
 
+
 void Level1State::Update(sf::RenderWindow * window, float frametime) {
 	player->Update(frametime);
 	tileMap.setPosition(((WINWIDTH*WINSCALE) / 2 - player->getX()), ((WINHEIGHT*WINSCALE) / 2 - player->getY()));
@@ -13,6 +14,8 @@ void Level1State::Update(sf::RenderWindow * window, float frametime) {
 
 	//attack enemies
 	player->checkAttack(enemies);
+
+
 
 	//update all enemies
 
@@ -23,10 +26,19 @@ void Level1State::Update(sf::RenderWindow * window, float frametime) {
 			i--;
 		}
 	}
+
+
+	//if player falls, he dies
+	if (player->getY() > WINHEIGHT*WINSCALE) {
+		player->setDead();
+	}
+
 	//if player dies, go to gameoverstate
 	if (player->isDead()) {
-		gsm.SetState(GameStateManager::MENUSTATE); //replace with gameoverstate
+		gsm.SetState(GameStateManager::GAMEOVERSTATE); //change to gameOverState
 	}
+
+	
 }
 
 
@@ -41,7 +53,8 @@ void Level1State::Draw(sf::RenderWindow * window) {
 	for (int i = 0; i < enemies.size(); i++) {
 		enemies[i]->Draw(window);
 	}
-	//draw timer
+
+	
 }
 
 void Level1State::Init() {
@@ -51,6 +64,8 @@ void Level1State::Init() {
 	player = new Player(tileMap);
 	player->setPosition(100, 400);
 
+
+	//positionner les ennemis
 	s = new Slugger(tileMap);
 	s->left = true;
 	s->setPosition(300, 530);
@@ -79,10 +94,9 @@ void Level1State::Init() {
 	s->left = true;
 	enemies.push_back(s);
 
-	s = new Slugger(tileMap);
-	s->setPosition(2400, 600);
-	s->left = true;
-	enemies.push_back(s);
+
+	
+
 }
 
 void Level1State::KeyPressed(sf::Keyboard::Key key) {

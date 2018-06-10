@@ -17,6 +17,7 @@ public:
 	void getNextPosition();
 	void hit(int damage);
 	bool isDead();
+	void setDead();
 	void Update(float frametime);
 	void Draw(sf::RenderWindow *window);
 

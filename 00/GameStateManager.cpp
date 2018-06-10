@@ -8,10 +8,15 @@ GameStateManager::GameStateManager() {
 	this->States.push_back(new MenuState(*this));
 	this->States.push_back(new Level1State(*this));
 	this->States.push_back(new GameOverState(*this));
+	this->States.push_back(new WinState(*this));
 }
 
 void GameStateManager::SetState(int state) {
 	this->currentState = state;
+}
+
+int GameStateManager::GetState() {
+	return currentState;
 }
 
 void GameStateManager::Update(sf::RenderWindow * window, float frametime) {

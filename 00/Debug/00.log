@@ -1,6 +1,16 @@
-﻿  Level1State.cpp
+﻿  GameOverState.cpp
 c:\users\guill\desktop\00\00\mapobject.h(22): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
 c:\users\guill\desktop\00\00\mapobject.h(23): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-c:\users\guill\desktop\00\00\level1state.cpp(19): warning C4018: '<' : incompatibilité signed/unsigned
-c:\users\guill\desktop\00\00\level1state.cpp(41): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\guill\desktop\00\00\gameoverstate.cpp(18): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\guill\desktop\00\00\gameoverstate.cpp(31): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\users\guill\desktop\00\00\gameoverstate.cpp(44): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\guill\desktop\00\00\gameoverstate.cpp(60): warning C4018: '>' : incompatibilité signed/unsigned
+  WinState.cpp
+c:\users\guill\desktop\00\00\mapobject.h(22): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\guill\desktop\00\00\mapobject.h(23): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\guill\desktop\00\00\winstate.cpp(18): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\guill\desktop\00\00\winstate.cpp(31): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\users\guill\desktop\00\00\winstate.cpp(44): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\guill\desktop\00\00\winstate.cpp(60): warning C4018: '>' : incompatibilité signed/unsigned
+  Génération de code en cours...
   00.vcxproj -> C:\Users\guill\Desktop\00\Debug\00.exe

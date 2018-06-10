@@ -1,27 +1,32 @@
 #pragma once
 #include "GameState.h"
 #include "GameStateManager.h"
-#include "TileMap.h"
 #include "Background.h"
-#include "Player.h"
-#include "Slugger.h"
-#include "TimeBomb.h"
 
-class Level1State : public GameState {
+class WinState : public GameState
+{
 public:
 	class GameStateManager& gsm;
-	Level1State(class GameStateManager& gsm);
+	WinState(class GameStateManager& gsm);
 	void Update(sf::RenderWindow* window, float frametime);
 	void Draw(sf::RenderWindow* window);
 	void Init();
 	void KeyPressed(sf::Keyboard::Key key);
 	void KeyReleased(sf::Keyboard::Key key);
-	~Level1State();
+	void selected();
+	~WinState();
 private:
-	TileMap tileMap;
+	sf::Texture bg;
+	sf::Sprite bgSprite;
 	Background background;
-	Player *player;
-	std::vector<Enemy*> enemies;
-	Slugger *s;
-	TimeBomb *timeBomb;
+	double bgx = 0, bgy = 0;
+	int currentChoice = 0;
+	sf::Font font;
+	std::vector<sf::Text*> Options = {
+		new sf::Text("Next Mission",font),
+		new sf::Text("Quit",font),
+	};
+	sf::Text WinHeader;
+
 };
+

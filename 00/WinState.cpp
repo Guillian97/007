@@ -1,20 +1,20 @@
 #include "stdafx.h"
-#include "MenuState.h"
+#include "WinState.h"
 #include <iostream>
 #include "Constants.h"
 
-MenuState::MenuState(GameStateManager& gsm) :gsm(gsm), background("Resources/Backgrounds/menubg.gif", 1) {
-	Init(); //attention dangereux
+WinState::WinState(GameStateManager& gsm) :gsm(gsm), background("Resources/Backgrounds/winbg.gif", 1) { //change bg later
+	Init();
 	background.setVector(-1, 0);
 }
 
-void MenuState::Update(sf::RenderWindow * window, float frametime) {
+void WinState::Update(sf::RenderWindow * window, float frametime) {
 	background.Update();
 }
 
-void MenuState::Draw(sf::RenderWindow * window) {
+void WinState::Draw(sf::RenderWindow * window) {
 	background.Draw(window);
-	window->draw(MenuHeader);
+	window->draw(WinHeader);
 	for (int i = 0; i < Options.size(); i++) {
 		if (i == currentChoice) {
 			Options.at(i)->setFillColor(sf::Color::Black);
@@ -26,18 +26,18 @@ void MenuState::Draw(sf::RenderWindow * window) {
 	}
 }
 
-void MenuState::Init() {
+void WinState::Init() {
 	bgSprite.setTexture(bg);
 	bgSprite.setPosition(bgx, bgy);
 	bgSprite.setScale(WINWIDTH*WINSCALE / bgSprite.getGlobalBounds().width, WINHEIGHT*WINSCALE / bgSprite.getGlobalBounds().height);
 	if (!font.loadFromFile("Resources/Secret.TTF")) {
 		std::cout << "unable to load from file" << std::endl;
 	}
-	MenuHeader.setFont(font);
-	MenuHeader.setString("Agent OO");
-	MenuHeader.setCharacterSize(70);
-	MenuHeader.setPosition(WINWIDTH*WINSCALE / 2 - MenuHeader.getGlobalBounds().width / 2, 80);
-	MenuHeader.setFillColor(sf::Color(128, 0, 0));
+	WinHeader.setFont(font);
+	WinHeader.setString("Mission Complete");
+	WinHeader.setCharacterSize(70);
+	WinHeader.setPosition(WINWIDTH*WINSCALE / 2 - WinHeader.getGlobalBounds().width / 2, 80);
+	WinHeader.setFillColor(sf::Color(128, 0, 0));
 	//affichage du texte
 	int offset = 100;
 	for (sf::Text *t : Options) {
@@ -48,7 +48,7 @@ void MenuState::Init() {
 
 }
 
-void MenuState::KeyPressed(sf::Keyboard::Key key) {
+void WinState::KeyPressed(sf::Keyboard::Key key) {
 	if (key == sf::Keyboard::Up) {
 		currentChoice--;
 		if (currentChoice < 0) {
@@ -66,21 +66,21 @@ void MenuState::KeyPressed(sf::Keyboard::Key key) {
 	}
 }
 
-void MenuState::KeyReleased(sf::Keyboard::Key key) {
+void WinState::KeyReleased(sf::Keyboard::Key key) {
 }
 
-void MenuState::selected() {
+void WinState::selected() {
 	if (currentChoice == 0) {
-		gsm.SetState(GameStateManager::LEVEL1STATE);
+		//next level: not available yet
+		gsm.SetState(GameStateManager::MENUSTATE);
 	}
 	if (currentChoice == 1) {
-		//Help
+		//Quit (back to menu)
+		gsm.SetState(GameStateManager::MENUSTATE);
 	}
-	if (currentChoice == 2) {
-		//Quit
-	}
+
 }
 
-
-MenuState::~MenuState() {
+WinState::~WinState()
+{
 }

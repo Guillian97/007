@@ -3,7 +3,8 @@
 #include <iostream>
 #include "Constants.h"
 
-GameOverState::GameOverState(GameStateManager& gsm) :gsm(gsm), background("Resources/Backgrounds/menubg.gif", 1) { //change bg later
+GameOverState::GameOverState(GameStateManager& gsm) :gsm(gsm), background("Resources/Backgrounds/gameoverbg.gif", 1) { //change bg later
+	Init();
 	background.setVector(-1, 0);
 }
 
@@ -33,7 +34,7 @@ void GameOverState::Init() {
 		std::cout << "unable to load from file" << std::endl;
 	}
 	GOHeader.setFont(font);
-	GOHeader.setString("You Failed");
+	GOHeader.setString("Mission Failed");
 	GOHeader.setCharacterSize(70);
 	GOHeader.setPosition(WINWIDTH*WINSCALE / 2 - GOHeader.getGlobalBounds().width / 2, 80);
 	GOHeader.setFillColor(sf::Color(128, 0, 0));
@@ -70,6 +71,7 @@ void GameOverState::KeyReleased(sf::Keyboard::Key key) {
 
 void GameOverState::selected() {
 	if (currentChoice == 0) {
+		//restart level
 		gsm.SetState(GameStateManager::LEVEL1STATE);
 	}
 	if (currentChoice == 1) {
